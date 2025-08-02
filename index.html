@@ -1,184 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>made with &lt; 3 by radiocycle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>@exl3d bio...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            color: #e0e0e0;
-            background-image: url('static/banner.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(10px) brightness(0.7);
-            z-index: -1;
-        }
-
-        .main-container {
-            background-color: rgba(30, 30, 30, 0.85);
-            border-radius: 20px;
-            padding: 40px;
-            width: 85%;
-            max-width: 550px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .username {
-            font-size: 32px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
-
-        .tagline {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 15px;
-            color: #a0a0a0;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
-        }
-
-        .separator {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 25px auto;
-            width: 70%;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            text-align: left;
-            margin: 0 auto;
-            width: 90%;
-        }
-
-        .info-item {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #d0d0d0;
-        }
-
-        .info-label {
-            font-weight: 500;
-            color: #ffffff;
-            font-size: 13px;
-            display: block;
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .button {
-            background-color: rgba(60, 60, 60, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            padding: 14px 0;
-            text-decoration: none;
-            font-size: 15px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+        .container {
             width: 100%;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(5px);
+            max-width: 600px;
         }
 
-        .button:hover {
-            background-color: rgba(90, 90, 90, 0.8);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        body.light-theme {
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+        body.light-theme .card {
+            background-color: #ffffff;
+            border: 1px solid #dddfe2;
+        }
+        body.light-theme #theme-toggle {
+            background-color: #e4e6eb;
+            color: #050505;
+        }
+        body.light-theme .social-btn {
+            background-color: #e9ecef;
+            color: #343a40;
+        }
+        body.light-theme .social-btn:hover {
+            background-color: #dee2e6;
+        }
+        body.light-theme li {
+            border-bottom: 1px solid #f0f2f5;
         }
 
-        @media (max-width: 600px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-container {
-                padding: 30px 20px;
-                width: 90%;
-            }
+        body.dark-theme {
+            background-color: #18191a;
+            color: #e4e6eb;
+        }
+        body.dark-theme .card {
+            background-color: #242526;
+            border: 1px solid #3a3b3c;
+        }
+        body.dark-theme #theme-toggle {
+            background-color: #3a3b3c;
+            color: #e4e6eb;
+        }
+        body.dark-theme .social-btn {
+            background-color: #3a3b3c;
+            color: #e4e6eb;
+        }
+        body.dark-theme .social-btn:hover {
+            background-color: #4e4f50;
+        }
+        body.dark-theme li {
+            border-bottom: 1px solid #3a3b3c;
+        }
+
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        #theme-toggle {
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .card {
+            border-radius: 8px;
+            padding: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li strong {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        li span {
+            font-size: 1em;
+            text-align: right;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: background-color 0.2s;
+        }
+
+        .social-btn i {
+            font-size: 20px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .btn-text {
+            font-weight: bold;
+            white-space: nowrap;
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+            transition: max-width 0.4s ease-in-out, opacity 0.3s ease-in-out, margin-left 0.4s ease-in-out;
+        }
+
+        .social-btn:hover .btn-text {
+            max-width: 100px;
+            opacity: 1;
+            margin-left: 8px;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="username">Iskander</div>
-        <div class="tagline">Nothing...</div>
-        
-        <div class="separator"></div>
-        
-        <div class="info-grid">
-            <div class="info-item">
-                <span class="info-label">Pseudonyms:</span>
-                    Radiocycle, Kezuhiro, Aki, Anthropix
-            </div>
-            <div class="info-item">
-                <span class="info-label">Age:</span>
-                    15 y.o. (April 24)
-            </div>
-            <div class="info-item">
-                <span class="info-label">Devices:</span>
-                    Google Pixel 6, ASUS Zenfone 2 Laser (broken), Xiaomi Mi Mix (mi cloud)
-            </div>
-            <div class="info-item">
-                <span class="info-label">Laptop:</span>
-                    Acer Aspire A15-41M
-            </div>
-            <div class="info-item">
-                <span class="info-label">From:</span>
-                    Russia
-            </div>
-            <div class="info-item">
-                <span class="info-label">Languages:</span>
-                    Russian, English
-            </div>
-            <div class="info-item">
-                <span class="info-label">Programming language:</span>
-                    Python
-            </div>
+
+    <div class="container">
+        <div class="top-bar">
+            <h1>Краткое био</h1>
+            <button id="theme-toggle">Сменить тему</button>
         </div>
-        
-        <div class="separator"></div>
-        
-        <div class="buttons">
-            <a href="https://t.me/cachedfiles" target="_blank" class="button">Telegram</a>
-            <a href="mailto:iskander.connection@gmail.com" target="_blank" class="button">Email</a>
-            <a href="https://github.com/radiocycle" target="_blank" class="button">GitHub</a>
-        </div>
+
+        <main>
+            <div class="card">
+                <ul>
+                    <li>
+                        <strong>Имя</strong>
+                        <span>Искандер</span>
+                    </li>
+                    <li>
+                        <strong>Ники</strong>
+                        <span>Kezuhiro, Aki, Radiocycle</span>
+                    </li>
+                    <li>
+                        <strong>Возраст</strong>
+                        <span>15</span>
+                    </li>
+                    <li>
+                        <strong>День рождения</strong>
+                        <span>24.04</span>
+                    </li>
+                    <li>
+                        <strong>Девайсы</strong>
+                        <span>Google Pixel 6,
+                        <br>Acer Aspire a15-41m</span>
+                    </li>
+                    <li>
+                        <strong>Увлечения</strong>
+                        <span>аниме, кодинг</span>
+                    </li>
+                    <li>
+                        <strong>Соцсети:</strong>
+                        <div class="social-buttons">
+                            <a href="https://t.me/exl3d" target="_blank" class="social-btn" aria-label="Telegram">
+                                <i class="fa-brands fa-telegram"></i>
+                                <span class="btn-text">Telegram</span>
+                            </a>
+                            <a href="https://github.com/radiocycle" target="_blank" class="social-btn" aria-label="GitHub">
+                                <i class="fa-brands fa-github"></i>
+                                <span class="btn-text">GitHub</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
     </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('light-theme') ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>
