@@ -191,7 +191,7 @@
 
     <div class="container">
         <div class="top-bar">
-            <h1>Short Bio</h1>
+            <h1>Biography</h1>
             <button id="theme-toggle" aria-label="Toggle theme">
                 <i class="fa-solid"></i>
                 <span class="btn-text"></span>
@@ -266,7 +266,7 @@
             }
         }
 
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         applyTheme(savedTheme);
 
         themeToggle.addEventListener('click', () => {
